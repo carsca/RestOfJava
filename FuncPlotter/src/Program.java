@@ -17,9 +17,18 @@ public class Program {
         // Draw a short red diagonal on the canvas
         canvas.pause();
         canvas.setColor(Color.red);
-        for (int i = 0; i < 100; i++) {
-            canvas.plot(i, i);
+        MyFunction fSin = (x)-> {return (int) (200 * Math.sin(Math.PI*x/360));};
+        MyFunction fQuad = (x) -> {return (int) (((x-200)*(x+200))/250);};
+        MyFunction fLog = (x) -> {return (int) (20 * Math.log(x));};
+        MyFunction fCubic = (x) -> {return (int) ((Math.exp(3))/200000);};
+        for (int x = -360; x < 360; x++) {
+            canvas.plot(x, fSin.calcY(x));
+            canvas.plot(x, fQuad.calcY(x));
+            canvas.plot(x, fLog.calcY(x));
+            canvas.plot(x, fCubic.calcY(x));
         }
+        
+        
 
         // Pause and close the canvas then terminate the program.
         canvas.pause();
